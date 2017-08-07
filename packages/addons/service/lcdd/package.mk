@@ -17,8 +17,9 @@
 ################################################################################
 
 PKG_NAME="lcdd"
-PKG_VERSION="c05a7de"
-PKG_REV="102"
+PKG_VERSION="466edd3"
+PKG_SHA256="786aab192a788fd09119645d60576ba258eec3de1a455aaa6d9ddea5e30e1749"
+PKG_REV="105"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://lcdproc.org/"
@@ -49,7 +50,7 @@ pre_make_target() {
 }
 
 addon() {
-  drivers="none|$(cat $ROOT/$PKG_BUILD/.$TARGET_NAME/config.log | sed -n "s|^DRIVERS=' \(.*\)'|\1|p" | sed "s|.so||g" | tr ' ' '|')"
+  drivers="none|$(cat $PKG_BUILD/.$TARGET_NAME/config.log | sed -n "s|^DRIVERS=' \(.*\)'|\1|p" | sed "s|.so||g" | tr ' ' '|')"
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config
 

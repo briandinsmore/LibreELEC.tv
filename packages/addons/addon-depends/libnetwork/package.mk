@@ -18,6 +18,7 @@
 
 PKG_NAME="libnetwork"
 PKG_VERSION="0f53435"
+PKG_SHA256="823f6601361b02ae6a00bfc416b0286629dbf794d36fb65ba1d88eaa379f397b"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="APL"
@@ -58,9 +59,9 @@ pre_make_target() {
   export CGO_NO_EMULATION=1
   export CGO_CFLAGS=$CFLAGS
   export LDFLAGS="-extld $CC"
-  export GOLANG=$ROOT/$TOOLCHAIN/lib/golang/bin/go
-  export GOPATH=$ROOT/$PKG_BUILD.gopath
-  export GOROOT=$ROOT/$TOOLCHAIN/lib/golang
+  export GOLANG=$TOOLCHAIN/lib/golang/bin/go
+  export GOPATH=$PKG_BUILD.gopath
+  export GOROOT=$TOOLCHAIN/lib/golang
   export PATH=$PATH:$GOROOT/bin
 }
 

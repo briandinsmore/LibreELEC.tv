@@ -1,5 +1,5 @@
 ################################################################################
-#      This file is part of LibreELEC - http://www.libreelec.tv
+#      This file is part of LibreELEC - https://libreelec.tv
 #      Copyright (C) 2016 Team LibreELEC
 #
 #  LibreELEC is free software: you can redistribute it and/or modify
@@ -18,6 +18,7 @@
 
 PKG_NAME="tcpdump"
 PKG_VERSION="4.7.4"
+PKG_SHA256="6be520269a89036f99c0b2126713a60965953eab921002b07608ccfc0c47d9af"
 PKG_ARCH="any"
 PKG_SITE="http://www.tcpdump.org/"
 PKG_URL="http://www.tcpdump.org/release/tcpdump-${PKG_VERSION}.tar.gz"

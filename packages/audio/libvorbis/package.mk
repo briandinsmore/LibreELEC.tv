@@ -18,6 +18,7 @@
 
 PKG_NAME="libvorbis"
 PKG_VERSION="1.3.5"
+PKG_SHA256="54f94a9527ff0a88477be0a71c0bab09a4c3febe0ed878b24824906cd4b0e1d1"
 PKG_ARCH="any"
 PKG_LICENSE="BSD"
 PKG_SITE="http://www.vorbis.com/"
@@ -36,3 +37,7 @@ PKG_CONFIGURE_OPTS_TARGET="--enable-static --disable-shared \
                            --disable-oggtest \
                            --disable-docs \
                            --disable-examples"
+
+pre_configure_target() {
+  export CFLAGS="$CFLAGS -fPIC"
+}

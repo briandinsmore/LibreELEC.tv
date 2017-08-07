@@ -18,7 +18,8 @@
 
 PKG_NAME="steamcontroller"
 PKG_VERSION="60499dc"
-PKG_REV="101"
+PKG_SHA256="04a846c6f659fb5efca7747fe78e15c1348b5e0579437bb425f538318289bb80"
+PKG_REV="102"
 PKG_ARCH="any"
 PKG_LICENSE="MIT"
 PKG_SITE="https://github.com/ynsta/steamcontroller"
@@ -61,6 +62,6 @@ addon() {
     fi
     cp $(get_build_dir linux)/usr/include/linux/input.h $ADDON_BUILD/$PKG_ADDON_ID/include/linux/
 
-  python -Wi -t -B $ROOT/$TOOLCHAIN/lib/python2.7/compileall.py $ADDON_BUILD/$PKG_ADDON_ID/lib/ -f 1>/dev/null
+  python -Wi -t -B $TOOLCHAIN/lib/python2.7/compileall.py $ADDON_BUILD/$PKG_ADDON_ID/lib/ -f 1>/dev/null
   find $ADDON_BUILD/$PKG_ADDON_ID/lib/ -name '*.py' -exec rm {} \;
 }

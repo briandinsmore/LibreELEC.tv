@@ -17,7 +17,8 @@
 ################################################################################
 
 PKG_NAME="glibc"
-PKG_VERSION="2.24"
+PKG_VERSION="2.25"
+PKG_SHA256="067bd9bb3390e79aa45911537d13c3721f1d9d3769931a30c2681bfee66f23a0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.gnu.org/software/libc/"
@@ -61,10 +62,6 @@ else
 fi
 
 NSS_CONF_DIR="$PKG_BUILD/nss"
-
-GLIBC_EXCLUDE_BIN="catchsegv gencat getconf iconv iconvconfig ldconfig"
-GLIBC_EXCLUDE_BIN="$GLIBC_EXCLUDE_BIN makedb mtrace pcprofiledump"
-GLIBC_EXCLUDE_BIN="$GLIBC_EXCLUDE_BIN pldd rpcgen sln sotruss sprof xtrace"
 
 pre_build_target() {
   cd $PKG_BUILD
@@ -115,6 +112,9 @@ echo "libdir=/usr/lib" >> configparms
 echo "slibdir=/usr/lib" >> configparms
 echo "sbindir=/usr/bin" >> configparms
 echo "rootsbindir=/usr/bin" >> configparms
+echo "build-programs=yes" >> configparms
+
+GLIBC_INCLUDE_BIN="getent ldd locale"
 }
 
 post_makeinstall_target() {
@@ -122,9 +122,18 @@ post_makeinstall_target() {
   ln -sf $(basename $INSTALL/usr/lib/ld-*.so) $INSTALL/usr/lib/ld.so
 
 # cleanup
-  for i in $GLIBC_EXCLUDE_BIN; do
-    rm -rf $INSTALL/usr/bin/$i
+# remove any programs we don't want/need, keeping only those we want
+  for f in $(find $INSTALL/usr/bin -type f); do
+    fb="$(basename "${f}")"
+    for ib in $GLIBC_INCLUDE_BIN; do
+      if [ "${ib}" == "${fb}" ]; then
+        fb=
+        break
+      fi
+    done
+    [ -n "${fb}" ] && rm -rf ${f}
   done
+
   rm -rf $INSTALL/usr/lib/audit
   rm -rf $INSTALL/usr/lib/glibc
   rm -rf $INSTALL/usr/lib/libc_pic
@@ -138,7 +147,7 @@ post_makeinstall_target() {
 # add UTF-8 charmap for Generic (charmap is needed for installer)
   if [ "$PROJECT" = "Generic" ]; then
     mkdir -p $INSTALL/usr/share/i18n/charmaps
-    cp -PR $ROOT/$PKG_BUILD/localedata/charmaps/UTF-8 $INSTALL/usr/share/i18n/charmaps
+    cp -PR $PKG_BUILD/localedata/charmaps/UTF-8 $INSTALL/usr/share/i18n/charmaps
     gzip $INSTALL/usr/share/i18n/charmaps/UTF-8
   fi
 
@@ -146,12 +155,12 @@ post_makeinstall_target() {
     rm -rf $INSTALL/usr/share/i18n/locales
 
     mkdir -p $INSTALL/usr/share/i18n/locales
-      cp -PR $ROOT/$PKG_BUILD/localedata/locales/POSIX $INSTALL/usr/share/i18n/locales
+      cp -PR $PKG_BUILD/localedata/locales/POSIX $INSTALL/usr/share/i18n/locales
   fi
 
 # create default configs
   mkdir -p $INSTALL/etc
-    cp $PKG_DIR/config/nsswitch.conf $INSTALL/etc
+    cp $PKG_DIR/config/nsswitch-target.conf $INSTALL/etc/nsswitch.conf
     cp $PKG_DIR/config/host.conf $INSTALL/etc
     cp $PKG_DIR/config/gai.conf $INSTALL/etc
 
@@ -161,8 +170,8 @@ post_makeinstall_target() {
 }
 
 configure_init() {
-  cd $ROOT/$PKG_BUILD
-    rm -rf $ROOT/$PKG_BUILD/.$TARGET_NAME-init
+  cd $PKG_BUILD
+    rm -rf $PKG_BUILD/.$TARGET_NAME-init
 }
 
 make_init() {
@@ -171,13 +180,21 @@ make_init() {
 
 makeinstall_init() {
   mkdir -p $INSTALL/usr/lib
-    cp -PR $ROOT/$PKG_BUILD/.$TARGET_NAME/elf/ld*.so* $INSTALL/usr/lib
-    cp -PR $ROOT/$PKG_BUILD/.$TARGET_NAME/libc.so* $INSTALL/usr/lib
-    cp -PR $ROOT/$PKG_BUILD/.$TARGET_NAME/math/libm.so* $INSTALL/usr/lib
-    cp -PR $ROOT/$PKG_BUILD/.$TARGET_NAME/nptl/libpthread.so* $INSTALL/usr/lib
-    cp -PR $ROOT/$PKG_BUILD/.$TARGET_NAME/rt/librt.so* $INSTALL/usr/lib
+    cp -PR $PKG_BUILD/.$TARGET_NAME/elf/ld*.so* $INSTALL/usr/lib
+    cp -PR $PKG_BUILD/.$TARGET_NAME/libc.so* $INSTALL/usr/lib
+    cp -PR $PKG_BUILD/.$TARGET_NAME/math/libm.so* $INSTALL/usr/lib
+    cp -PR $PKG_BUILD/.$TARGET_NAME/nptl/libpthread.so* $INSTALL/usr/lib
+    cp -PR $PKG_BUILD/.$TARGET_NAME/rt/librt.so* $INSTALL/usr/lib
+    cp -PR $PKG_BUILD/.$TARGET_NAME/resolv/libnss_dns.so* $INSTALL/usr/lib
+    cp -PR $PKG_BUILD/.$TARGET_NAME/resolv/libresolv.so* $INSTALL/usr/lib
 
     if [ "$TARGET_ARCH" = "arm" -a "$TARGET_FLOAT" = "hard" ]; then
       ln -sf ld.so $INSTALL/usr/lib/ld-linux.so.3
     fi
+}
+
+post_makeinstall_init() {
+# create default configs
+  mkdir -p $INSTALL/etc
+    cp $PKG_DIR/config/nsswitch-init.conf $INSTALL/etc/nsswitch.conf
 }

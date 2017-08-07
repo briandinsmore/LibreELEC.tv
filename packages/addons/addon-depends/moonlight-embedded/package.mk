@@ -18,6 +18,7 @@
 
 PKG_NAME="moonlight-embedded"
 PKG_VERSION="9301898"
+PKG_SHA256="62fcfbb0c775b0b8836e9b959ea9bebf0ffeecc6424e90f6e4beab353f1ef2d0"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/irtimmer/moonlight-embedded"
@@ -45,7 +46,7 @@ fi
 PKG_CMAKE_OPTS_TARGET="$FREESCALE_V4L_INCLUDE"
 
 pre_build_target() {
-  cp -a $(get_build_dir moonlight-common-c)/* $ROOT/$PKG_BUILD/third_party/moonlight-common-c
+  cp -a $(get_build_dir moonlight-common-c)/* $PKG_BUILD/third_party/moonlight-common-c
 }
 
 pre_configure_target() {

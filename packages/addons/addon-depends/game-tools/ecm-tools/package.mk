@@ -1,5 +1,5 @@
 ################################################################################
-#      This file is part of LibreELEC - http://www.libreelec.tv
+#      This file is part of LibreELEC - https://libreelec.tv
 #      Copyright (C) 2016 Team LibreELEC
 #
 #  LibreELEC is free software: you can redistribute it and/or modify
@@ -18,6 +18,7 @@
 
 PKG_NAME="ecm-tools"
 PKG_VERSION="55365b0"
+PKG_SHA256="39c2d0e36b1cba33fa9fee1c0a2a63f851b561fceb59dc99550a1e8e580d3b5a"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/alucryd/ecm-tools"

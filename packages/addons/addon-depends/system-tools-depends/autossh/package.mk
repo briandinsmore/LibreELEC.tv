@@ -1,5 +1,5 @@
 ################################################################################
-#      This file is part of LibreELEC - http://www.libreelec.tv
+#      This file is part of LibreELEC - https://libreelec.tv
 #      Copyright (C) 2016 Team LibreELEC
 #
 #  LibreELEC is free software: you can redistribute it and/or modify
@@ -18,6 +18,7 @@
 
 PKG_NAME="autossh"
 PKG_VERSION="1.4e"
+PKG_SHA256="9e8e10a59d7619176f4b986e256f776097a364d1be012781ea52e08d04679156"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.harding.motd.ca/"

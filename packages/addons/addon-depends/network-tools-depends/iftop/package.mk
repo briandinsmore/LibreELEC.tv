@@ -1,5 +1,5 @@
 ################################################################################
-#      This file is part of LibreELEC - http://www.libreelec.tv
+#      This file is part of LibreELEC - https://libreelec.tv
 #      Copyright (C) 2016 Team LibreELEC
 #
 #  LibreELEC is free software: you can redistribute it and/or modify
@@ -18,6 +18,7 @@
 
 PKG_NAME="iftop"
 PKG_VERSION="1.0pre4"
+PKG_SHA256="f733eeea371a7577f8fe353d86dd88d16f5b2a2e702bd96f5ffb2c197d9b4f97"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://htop.sourceforge.net/"

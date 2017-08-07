@@ -17,7 +17,8 @@
 ################################################################################
 
 PKG_NAME="bcm2835-driver"
-PKG_VERSION="1af015c"
+PKG_VERSION="2304778"
+PKG_SHA256="a49d3908c36a84c4b2e9f739787d376fadedb1ae90d365941037c0d26e8aa112"
 PKG_ARCH="any"
 PKG_LICENSE="nonfree"
 PKG_SITE="http://www.broadcom.com"
@@ -45,6 +46,7 @@ make_target() {
     ln -sf $SYSROOT_PREFIX/usr/lib/libbrcmEGL.so $SYSROOT_PREFIX/usr/lib/libEGL.so
     ln -sf $SYSROOT_PREFIX/usr/lib/libbrcmGLESv2.so $SYSROOT_PREFIX/usr/lib/libGLESv2.so
     cp -PRv $FLOAT/opt/vc/lib/*.a $SYSROOT_PREFIX/usr/lib
+    cp -PRv $FLOAT/opt/vc/lib/pkgconfig $SYSROOT_PREFIX/usr/lib
 }
 
 makeinstall_target() {

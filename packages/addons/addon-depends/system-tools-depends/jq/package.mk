@@ -1,5 +1,5 @@
 ################################################################################
-#      This file is part of LibreELEC - http://www.libreelec.tv
+#      This file is part of LibreELEC - https://libreelec.tv
 #      Copyright (C) 2016 Team LibreELEC
 #
 #  LibreELEC is free software: you can redistribute it and/or modify
@@ -18,6 +18,7 @@
 
 PKG_NAME="jq"
 PKG_VERSION="1.5"
+PKG_SHA256="c4d2bfec6436341113419debf479d833692cc5cdab7eb0326b5a4d4fbe9f493c"
 PKG_ARCH="any"
 PKG_LICENSE="MIT"
 PKG_SITE="http://stedolan.github.io/jq/"

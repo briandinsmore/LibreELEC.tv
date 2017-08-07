@@ -18,6 +18,7 @@
 
 PKG_NAME="gcc-linaro-aarch64-elf"
 PKG_VERSION="4.9-2016.02"
+PKG_SHA256="67b8d6d3c764a5b2e21bf4a9cc990f6d6db691df5fcc814e34051c521346ec10"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE=""
@@ -36,6 +37,6 @@ make_host() {
 }
 
 makeinstall_host() {
-  mkdir -p $ROOT/$TOOLCHAIN/lib/gcc-linaro-aarch64-elf/
-    cp -a * $ROOT/$TOOLCHAIN/lib/gcc-linaro-aarch64-elf
+  mkdir -p $TOOLCHAIN/lib/gcc-linaro-aarch64-elf/
+    cp -a * $TOOLCHAIN/lib/gcc-linaro-aarch64-elf
 }

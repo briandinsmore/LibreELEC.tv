@@ -18,6 +18,7 @@
 
 PKG_NAME="readline"
 PKG_VERSION="6.3"
+PKG_SHA256="56ba6071b9462f980c5a72ab0023893b65ba6debb4eeb475d7a563dc65cafd43"
 PKG_ARCH="any"
 PKG_LICENSE="MIT"
 PKG_SITE="http://www.gnu.org/software/readline/"
@@ -35,6 +36,10 @@ PKG_CONFIGURE_OPTS_TARGET="bash_cv_wcwidth_broken=no \
                            --enable-static \
                            --with-curses \
                            --without-purify"
+
+pre_configure_target() {
+  CFLAGS="$CFLAGS -fPIC"
+}
 
 post_makeinstall_target() {
   rm -rf $INSTALL/usr/share/readline

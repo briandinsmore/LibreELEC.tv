@@ -18,6 +18,7 @@
 
 PKG_NAME="tini"
 PKG_VERSION="949e6fa"
+PKG_SHA256="7d1ac577b44a1bd097d6684ec5090b749cdf94962f38f3ed7b46d6ec0e25c209"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="MIT"
@@ -36,7 +37,7 @@ PKG_CMAKE_TARGET_OPTS="-DMINIMAL=ON"
 PKG_MAKE_TARGET_OPTS="tini-static"
 
 pre_configure_target(){
-  sed -i "s|@tini_VERSION_GIT@| - git.${PKG_VERSION}|" $ROOT/$PKG_BUILD/src/tiniConfig.h.in
+  sed -i "s|@tini_VERSION_GIT@| - git.${PKG_VERSION}|" $PKG_BUILD/src/tiniConfig.h.in
 }
 
 makeinstall_target() {

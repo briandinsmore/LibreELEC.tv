@@ -17,7 +17,8 @@
 ################################################################################
 
 PKG_NAME="xf86-input-libinput"
-PKG_VERSION="0.23.0"
+PKG_VERSION="0.25.1"
+PKG_SHA256="489f7d591c9ef08463d4966e61f7c6ea433f5fcbb9f5370fb621da639a84c7e0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.freedesktop.org/wiki/Software/libinput/"
@@ -34,5 +35,5 @@ PKG_CONFIGURE_OPTS_TARGET="--with-xorg-module-dir=$XORG_PATH_MODULES"
 
 post_makeinstall_target() {
   mkdir -p $INSTALL/usr/share/X11/xorg.conf.d
-    cp $ROOT/$PKG_BUILD/conf/*-libinput.conf $INSTALL/usr/share/X11/xorg.conf.d
+    cp $PKG_BUILD/conf/*-libinput.conf $INSTALL/usr/share/X11/xorg.conf.d
 }

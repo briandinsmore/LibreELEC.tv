@@ -17,11 +17,12 @@
 ################################################################################
 
 PKG_NAME="imagemagick"
-PKG_VERSION="6.9.6-7"
+PKG_VERSION="7.0.5-0"
+PKG_SHA256="f2c0e316069df630e42f63a635068ed943fb3d371627ec9989c3b460b69e2758"
 PKG_ARCH="any"
 PKG_LICENSE="http://www.imagemagick.org/script/license.php"
 PKG_SITE="http://www.imagemagick.org/"
-PKG_URL="http://www.imagemagick.org/download/releases/ImageMagick-$PKG_VERSION.tar.xz"
+PKG_URL="https://github.com/ImageMagick/ImageMagick/archive/$PKG_VERSION.tar.gz"
 PKG_SOURCE_DIR="ImageMagick-$PKG_VERSION"
 PKG_DEPENDS_TARGET="toolchain libX11"
 PKG_SECTION="graphics"

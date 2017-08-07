@@ -17,11 +17,12 @@
 ################################################################################
 
 PKG_NAME="elfutils"
-PKG_VERSION="0.167"
+PKG_VERSION="0.168"
+PKG_SHA256="b88d07893ba1373c7dd69a7855974706d05377766568a7d9002706d5de72c276"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
-PKG_SITE="https://fedorahosted.org/elfutils/"
-PKG_URL="https://fedorahosted.org/releases/e/l/elfutils/$PKG_VERSION/$PKG_NAME-$PKG_VERSION.tar.bz2"
+PKG_SITE="https://sourceware.org/elfutils/"
+PKG_URL="https://sourceware.org/elfutils/ftp/$PKG_VERSION/$PKG_NAME-$PKG_VERSION.tar.bz2"
 PKG_DEPENDS_TARGET="toolchain zlib"
 PKG_SECTION="devel"
 PKG_SHORTDESC="elfutils: collection of utilities to handle ELF objects"

@@ -1,5 +1,5 @@
 ################################################################################
-#      This file is part of LibreELEC - http://www.libreelec.tv
+#      This file is part of LibreELEC - https://libreelec.tv
 #      Copyright (C) 2016 Team LibreELEC
 #
 #  LibreELEC is free software: you can redistribute it and/or modify
@@ -18,6 +18,7 @@
 
 PKG_NAME="udpxy"
 PKG_VERSION="1.0.23-0"
+PKG_SHA256="b5b3523f20c82b0249acced317daa65ec1791ceed4e5f8f582ecf79067f41a18"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.udpxy.com/download-en.html"

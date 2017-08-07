@@ -18,6 +18,7 @@
 
 PKG_NAME="mpfr"
 PKG_VERSION="3.1.5"
+PKG_SHA256="015fde82b3979fbe5f83501986d328331ba8ddf008c1ff3da3c238f49ca062bc"
 PKG_ARCH="any"
 PKG_LICENSE="LGPL"
 PKG_SITE="http://www.mpfr.org/"
@@ -32,6 +33,6 @@ PKG_AUTORECONF="no"
 
 PKG_CONFIGURE_OPTS_HOST="--target=$TARGET_NAME \
                          --enable-static --disable-shared \
-                         --prefix=$ROOT/$TOOLCHAIN \
-                         --with-gmp-lib=$ROOT/$TOOLCHAIN/lib \
-                         --with-gmp-include=$ROOT/$TOOLCHAIN/include"
+                         --prefix=$TOOLCHAIN \
+                         --with-gmp-lib=$TOOLCHAIN/lib \
+                         --with-gmp-include=$TOOLCHAIN/include"

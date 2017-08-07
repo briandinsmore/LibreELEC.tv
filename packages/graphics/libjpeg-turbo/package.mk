@@ -18,10 +18,12 @@
 
 PKG_NAME="libjpeg-turbo"
 PKG_VERSION="1.5.1"
+PKG_SHA256="41429d3d253017433f66e3d472b8c7d998491d2f41caa7306b8d9a6f2a2c666c"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://libjpeg-turbo.virtualgl.org/"
 PKG_URL="$SOURCEFORGE_SRC/libjpeg-turbo/$PKG_VERSION/$PKG_NAME-$PKG_VERSION.tar.gz"
+PKG_DEPENDS_HOST="toolchain"
 PKG_DEPENDS_TARGET="toolchain"
 PKG_SECTION="graphics"
 PKG_SHORTDESC="libjpeg-turbo: a high-speed version of libjpeg for x86 and x86-64 processors which uses SIMD instructions (MMX, SSE2, etc.) to accelerate baseline JPEG compression and decompression."

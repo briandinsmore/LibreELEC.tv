@@ -1,5 +1,5 @@
 ################################################################################
-#      This file is part of LibreELEC - http://www.libreelec.tv
+#      This file is part of LibreELEC - https://libreelec.tv
 #      Copyright (C) 2009-2016 Team LibreELEC (team@libreelec.tv)
 #
 #  LibreELEC is free software: you can redistribute it and/or modify
@@ -18,6 +18,7 @@
 
 PKG_NAME="libdvdread"
 PKG_VERSION="17d99db"
+PKG_SHA256="e7179b2054163652596a56301c9f025515cb08c6d6310b42b897c3ad11c0199b"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/xbmc/libdvdread"

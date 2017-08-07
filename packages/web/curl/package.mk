@@ -25,12 +25,13 @@
 #   there: http://forum.xbmc.org/showthread.php?tid=177557
 
 PKG_NAME="curl"
-PKG_VERSION="7.52.1"
+PKG_VERSION="7.54.0"
+PKG_SHA256="f50ebaf43c507fa7cc32be4b8108fa8bbd0f5022e90794388f3c7694a302ff06"
 PKG_ARCH="any"
 PKG_LICENSE="MIT"
 PKG_SITE="http://curl.haxx.se"
 PKG_URL="http://curl.haxx.se/download/$PKG_NAME-$PKG_VERSION.tar.bz2"
-PKG_DEPENDS_TARGET="toolchain zlib libressl rtmpdump"
+PKG_DEPENDS_TARGET="toolchain zlib openssl rtmpdump"
 PKG_SECTION="web"
 PKG_SHORTDESC="curl: Client and library for (HTTP, HTTPS, FTP, ...) transfers"
 PKG_LONGDESC="Curl is a client to get documents/files from or send documents to a server, using any of the supported protocols (HTTP, HTTPS, FTP, FTPS, GOPHER, DICT, TELNET, LDAP or FILE). The command is designed to work without user interaction or any kind of interactivity."

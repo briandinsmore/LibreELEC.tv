@@ -1,5 +1,5 @@
 ################################################################################
-#      This file is part of LibreELEC - http://www.libreelec.tv
+#      This file is part of LibreELEC - https://libreelec.tv
 #      Copyright (C) 2016 Team LibreELEC
 #
 #  LibreELEC is free software: you can redistribute it and/or modify
@@ -18,6 +18,7 @@
 
 PKG_NAME="iat"
 PKG_VERSION="0.1.7"
+PKG_SHA256="fb72c42f4be18107ec1bff8448bd6fac2a3926a574d4950a4d5120f0012d62ca"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://sourceforge.net/projects/iat.berlios/"

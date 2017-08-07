@@ -18,6 +18,7 @@
 
 PKG_NAME="jsoncpp"
 PKG_VERSION="src-0.5.0"
+PKG_SHA256="22b14ecd0de8cdad2b6b6839f6d0804d3b84e91f42861ebd843832a26a927433"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"
@@ -35,5 +36,5 @@ pre_configure_target() {
 }
 
 pre_build_target() {
-  cp $PKG_DIR/config/CMakeLists.txt $ROOT/$PKG_BUILD
+  cp $PKG_DIR/config/CMakeLists.txt $PKG_BUILD
 }

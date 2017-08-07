@@ -18,6 +18,7 @@
 
 PKG_NAME="go"
 PKG_VERSION="1.7.5"
+PKG_SHA256="7af80c99d9e8a52e53d6a617a20332a8602b1a4eca9cbf3d829e1d43e688f6ba"
 PKG_ARCH="any"
 PKG_LICENSE="BSD"
 PKG_SITE="https://golang.org"
@@ -42,22 +43,22 @@ PKG_AUTORECONF="no"
 
 configure_host() {
   export GOOS=linux
-  export GOROOT_FINAL=$ROOT/$TOOLCHAIN/lib/golang
+  export GOROOT_FINAL=$TOOLCHAIN/lib/golang
   export GOROOT_BOOTSTRAP=/usr/lib/golang
   export GOARCH=amd64
 }
 
 make_host() {
-  cd $ROOT/$PKG_BUILD/src
+  cd $PKG_BUILD/src
   bash make.bash --no-banner
 }
 
 pre_makeinstall_host() {
   # need to cleanup old golang version when updating to a new version
-  rm -rf $ROOT/$TOOLCHAIN/lib/golang
+  rm -rf $TOOLCHAIN/lib/golang
 }
 
 makeinstall_host() {
-  mkdir -p $ROOT/$TOOLCHAIN/lib/golang
-  cp -av $ROOT/$PKG_BUILD/* $ROOT/$TOOLCHAIN/lib/golang/
+  mkdir -p $TOOLCHAIN/lib/golang
+  cp -av $PKG_BUILD/* $TOOLCHAIN/lib/golang/
 }

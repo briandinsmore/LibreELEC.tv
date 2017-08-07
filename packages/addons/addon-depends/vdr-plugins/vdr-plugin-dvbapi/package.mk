@@ -17,7 +17,8 @@
 ################################################################################
 
 PKG_NAME="vdr-plugin-dvbapi"
-PKG_VERSION="7a42b22"
+PKG_VERSION="d7c7587"
+PKG_SHA256="2b85a086aedf55246c5e8ee7d41648318cbb77b49d00e638d20b0737e33d9451"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/manio/vdr-plugin-dvbapi"
@@ -53,7 +54,7 @@ post_make_target() {
   VDR_APIVERSION=`sed -ne '/define APIVERSION/s/^.*"\(.*\)".*$/\1/p' $VDR_DIR/config.h`
   LIB_NAME=lib${PKG_NAME/-plugin/}
 
-  cp --remove-destination $ROOT/$PKG_BUILD/${LIB_NAME}.so $ROOT/$PKG_BUILD/${LIB_NAME}.so.${VDR_APIVERSION}
+  cp --remove-destination $PKG_BUILD/${LIB_NAME}.so $PKG_BUILD/${LIB_NAME}.so.${VDR_APIVERSION}
   $STRIP libvdr-*.so*
 }
 

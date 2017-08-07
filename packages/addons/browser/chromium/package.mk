@@ -20,7 +20,8 @@
 
 PKG_NAME="chromium"
 PKG_VERSION="55.0.2883.75"
-PKG_REV="106"
+PKG_SHA256="5bcf7180935bebc7648f7e2577f612da681f7846127f79dac22630ded9984e55"
+PKG_REV="107"
 PKG_ARCH="x86_64"
 PKG_LICENSE="Mixed"
 PKG_SITE="http://www.chromium.org/Home"
@@ -47,7 +48,7 @@ make_target() {
   export LD=$CXX
 
   # Use Python 2
-  find . -name '*.py' -exec sed -i -r "s|/usr/bin/python$|$ROOT/$TOOLCHAIN/bin/python|g" {} +
+  find . -name '*.py' -exec sed -i -r "s|/usr/bin/python$|$TOOLCHAIN/bin/python|g" {} +
 
   # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
   # Note: These are for OpenELEC use ONLY. For your own distribution, please
@@ -114,7 +115,7 @@ make_target() {
   ./third_party/libaddressinput/chromium/tools/update-strings.py
 
   ./tools/gn/bootstrap/bootstrap.py --gn-gen-args "${_flags[*]}"
-  ./out/Release/gn gen out/Release --args="${_flags[*]}" --script-executable=$ROOT/$TOOLCHAIN/bin/python
+  ./out/Release/gn gen out/Release --args="${_flags[*]}" --script-executable=$TOOLCHAIN/bin/python
 
   ninja -C out/Release chrome chrome_sandbox widevinecdmadapter
 }
@@ -130,8 +131,6 @@ addon() {
   cp -P  $PKG_BUILD/out/Release/{*.pak,*.dat,*.bin,libwidevinecdmadapter.so} $ADDON_BUILD/$PKG_ADDON_ID/bin
   cp -PR $PKG_BUILD/out/Release/locales $ADDON_BUILD/$PKG_ADDON_ID/bin/
   cp -PR $PKG_BUILD/out/Release/gen/content/content_resources.pak $ADDON_BUILD/$PKG_ADDON_ID/bin/
-
-  debug_strip $ADDON_BUILD/$PKG_ADDON_ID/bin
 
   # config
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config
@@ -172,7 +171,7 @@ addon() {
   cp -PL $(get_build_dir libexif)/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
 
   # libva-vdpau-driver
-  cp -PL $(get_build_dir libva-vdpau-driver)/.install_pkg/usr/lib/va/*.so $ADDON_BUILD/$PKG_ADDON_ID/lib
+  cp -PL $(get_build_dir libva-vdpau-driver)/.install_pkg/usr/lib/dri/*.so $ADDON_BUILD/$PKG_ADDON_ID/lib
 
   # unclutter
   cp -P $(get_build_dir unclutter)/.install_pkg/usr/bin/unclutter $ADDON_BUILD/$PKG_ADDON_ID/bin

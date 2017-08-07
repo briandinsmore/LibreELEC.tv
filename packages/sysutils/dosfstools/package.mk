@@ -18,6 +18,7 @@
 
 PKG_NAME="dosfstools"
 PKG_VERSION="3.0.28"
+PKG_SHA256="ee95913044ecf2719b63ea11212917649709a6e53209a72d622135aaa8517ee2"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/dosfstools/dosfstools"
@@ -44,7 +45,7 @@ pre_build_host() {
 }
 
 make_host() {
-  cd $ROOT/$PKG_BUILD/.$HOST_NAME
+  cd $PKG_BUILD/.$HOST_NAME
   make PREFIX=/usr
 }
 
@@ -56,7 +57,7 @@ makeinstall_init() {
 }
 
 makeinstall_host() {
-  mkdir -p $ROOT/$TOOLCHAIN/sbin
-    cp mkfs.fat $ROOT/$TOOLCHAIN/sbin
-    ln -sf mkfs.fat $ROOT/$TOOLCHAIN/sbin/mkfs.vfat
+  mkdir -p $TOOLCHAIN/sbin
+    cp mkfs.fat $TOOLCHAIN/sbin
+    ln -sf mkfs.fat $TOOLCHAIN/sbin/mkfs.vfat
 }

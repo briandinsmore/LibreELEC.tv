@@ -18,6 +18,7 @@
 
 PKG_NAME="boost"
 PKG_VERSION="1_61_0"
+PKG_SHA256="a547bd06c2fd9a71ba1d169d9cf0339da7ebf4753849a8f7d6fdb8feee99b640"
 PKG_ARCH="any"
 PKG_LICENSE="OSS"
 PKG_SITE="http://www.boost.org/"
@@ -38,8 +39,8 @@ make_host() {
 }
 
 makeinstall_host() {
-  mkdir -p $ROOT/$TOOLCHAIN/bin
-    cp bin.*/bjam $ROOT/$TOOLCHAIN/bin
+  mkdir -p $TOOLCHAIN/bin
+    cp bin.*/bjam $TOOLCHAIN/bin
 }
 
 pre_configure_target() {
@@ -50,8 +51,8 @@ pre_configure_target() {
 
 configure_target() {
   sh bootstrap.sh --prefix=/usr \
-                  --with-bjam=$ROOT/$TOOLCHAIN/bin/bjam \
-                  --with-python=$ROOT/$TOOLCHAIN/bin/python \
+                  --with-bjam=$TOOLCHAIN/bin/bjam \
+                  --with-python=$TOOLCHAIN/bin/python \
 
   echo "using gcc : `$CC -v 2>&1  | tail -n 1 |awk '{print $3}'` : $CC  : <compileflags>\"$CFLAGS\" <linkflags>\"$LDFLAGS\" ;" \
     > tools/build/src/user-config.jam
@@ -62,7 +63,7 @@ make_target() {
 }
 
 makeinstall_target() {
-  $ROOT/$TOOLCHAIN/bin/bjam -d2 --toolset=gcc link=static \
+  $TOOLCHAIN/bin/bjam -d2 --toolset=gcc link=static \
                                 --prefix=$SYSROOT_PREFIX/usr \
                                 --ignore-site-config \
                                 --layout=system \

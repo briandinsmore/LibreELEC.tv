@@ -17,7 +17,8 @@
 ################################################################################
 
 PKG_NAME="squeezelite"
-PKG_VERSION="33cca7e"
+PKG_VERSION="a3d95ec"
+PKG_SHA256="d5af85ed5673205ce5011898179e355fd387adc77327c45080551ffa9dbf3cf1"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/ralph-irving/squeezelite"
@@ -33,7 +34,7 @@ PKG_AUTORECONF="no"
 pre_make_target() {
   OPTS="-DDSD -DFFMPEG -DRESAMPLE -DVISEXPORT"
   CFLAGS="$CFLAGS $OPTS"
-  LDFLAGS="$LDFLAGS -lasound -lpthread -lm -lrt"
+  LDFLAGS="$LDFLAGS -lasound -lpthread -lm -lrt -lFLAC -lmad -lvorbisfile -lfaad -lmpg123"
 }
 
 makeinstall_target() {

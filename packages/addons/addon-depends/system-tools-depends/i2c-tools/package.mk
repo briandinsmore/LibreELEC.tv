@@ -1,5 +1,5 @@
 ################################################################################
-#      This file is part of LibreELEC - http://www.libreelec.tv
+#      This file is part of LibreELEC - https://libreelec.tv
 #      Copyright (C) 2016 Team LibreELEC
 #
 #  LibreELEC is free software: you can redistribute it and/or modify
@@ -18,6 +18,7 @@
 
 PKG_NAME="i2c-tools"
 PKG_VERSION="3.1.2"
+PKG_SHA256="f939a6242c03950cc568d0efdfa3db7a9c29e0e8f5abd01f2908bdd344c054ff"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.lm-sensors.org/wiki/I2CTools"

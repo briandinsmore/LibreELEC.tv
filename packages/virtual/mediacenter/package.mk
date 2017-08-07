@@ -40,9 +40,13 @@ if [ "$MEDIACENTER" = "kodi" ]; then
 # some python stuff needed for various addons
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET Pillow \
                                           simplejson \
-                                          pycrypto"
+                                          pycryptodome"
 # other packages
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET LibreELEC-settings \
-                                          xmlstarlet \
-                                          peripheral.joystick"
+                                          xmlstarlet"
+  
+  if [ "$JOYSTICK_SUPPORT" = "yes" ]; then
+    PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET peripheral.joystick"
+  fi
+
 fi

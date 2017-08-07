@@ -18,6 +18,7 @@
 
 PKG_NAME="sqlite"
 PKG_VERSION="autoconf-3150200"
+PKG_SHA256="07b35063b9386865b78226cdaca9a299d938a87aaa8fdc4d73edb0cef30f3149"
 PKG_ARCH="any"
 PKG_LICENSE="PublicDomain"
 PKG_SITE="https://www.sqlite.org/"
@@ -60,6 +61,9 @@ PKG_AUTORECONF="no"
 # sqlite3_config(SQLITE_CONFIG_MMAP_SIZE) call, or at run-time using the
 # mmap_size pragma.
   CFLAGS="$CFLAGS -DSQLITE_TEMP_STORE=3 -DSQLITE_DEFAULT_MMAP_SIZE=268435456"
+
+# libsqlite3.a(sqlite3.o): requires dynamic R_X86_64_PC32 reloc against 'sqlite3_stricmp' which may overflow at runtime
+  CFLAGS="$CFLAGS -fPIC"
 
 pre_make_target() {
   # dont build parallel

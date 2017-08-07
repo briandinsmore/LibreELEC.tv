@@ -18,6 +18,7 @@
 
 PKG_NAME="slang"
 PKG_VERSION="2.1.4"
+PKG_SHA256="14877efebbf0e57a3543f7ab3c72b491d3e398ea852616990f88463d64a3b4e3"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://s-lang.org/"
@@ -35,12 +36,12 @@ MAKEFLAGS=-j1
 
 pre_configure_target() {
  # slang fails to build in subdirs
- cd $ROOT/$PKG_BUILD
+ cd $PKG_BUILD
  rm -rf .$TARGET_NAME
 }
 
 pre_configure_host() {
  # slang fails to build in subdirs
- cd $ROOT/$PKG_BUILD
+ cd $PKG_BUILD
  rm -rf .$HOST_NAME
 }

@@ -17,11 +17,12 @@
 ################################################################################
 
 PKG_NAME="dtc"
-PKG_VERSION="1.4.2"
+PKG_VERSION="1.4.4"
+PKG_SHA256="2d1226634d71655466ebbd090d2873068c4918fbd5c433b91ead8ad08b9a5843"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
-PKG_SITE="https://git.kernel.org/cgit/utils/dtc/dtc.git"
-PKG_URL="https://git.kernel.org/cgit/utils/dtc/dtc.git/snapshot/$PKG_VERSION.tar.xz"
+PKG_SITE="https://git.kernel.org/pub/scm/utils/dtc/dtc.git/"
+PKG_URL="https://git.kernel.org/pub/scm/utils/dtc/dtc.git/snapshot/$PKG_VERSION.tar.gz"
 PKG_SOURCE_DIR="$PKG_VERSION"
 PKG_DEPENDS_TARGET="toolchain"
 PKG_SECTION="tools"
@@ -33,10 +34,10 @@ PKG_MAKE_OPTS_TARGET="dtc"
 
 makeinstall_target() {
   mkdir -p $INSTALL/usr/bin
-    cp -P $ROOT/$PKG_BUILD/dtc $INSTALL/usr/bin
+    cp -P $PKG_BUILD/dtc $INSTALL/usr/bin
 }
 
 makeinstall_host() {
-  mkdir -p $INSTALL/usr/bin
-    cp -P $ROOT/$PKG_BUILD/dtc $INSTALL/usr/bin
+  mkdir -p $TOOLCHAIN/bin
+    cp -P $PKG_BUILD/dtc $TOOLCHAIN/bin
 }

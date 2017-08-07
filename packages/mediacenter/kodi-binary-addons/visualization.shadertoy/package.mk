@@ -17,8 +17,9 @@
 ################################################################################
 
 PKG_NAME="visualization.shadertoy"
-PKG_VERSION="6a9a5ca"
-PKG_REV="1"
+PKG_VERSION="1717f36"
+PKG_SHA256="988015445128036f79f006a0df9c1692838436b4420e418bf84a7113bfc46300"
+PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/notspiff/visualization.shadertoy"
@@ -43,7 +44,7 @@ if [ "$OPENGLES_SUPPORT" = yes ]; then
 fi
 
 pre_configure_target() {
-  if [ "$KODIPLAYER_DRIVER" = bcm2835-firmware ]; then
+  if [ "$KODIPLAYER_DRIVER" = bcm2835-driver ]; then
     BCM2835_INCLUDES="-I$SYSROOT_PREFIX/usr/include/interface/vcos/pthreads/ \
                       -I$SYSROOT_PREFIX/usr/include/interface/vmcs_host/linux"
     export CFLAGS="$CFLAGS $BCM2835_INCLUDES"
@@ -52,12 +53,4 @@ pre_configure_target() {
     export CFLAGS="$CFLAGS -DLINUX -DEGL_API_FB"
     export CXXFLAGS="$CXXFLAGS -DLINUX -DEGL_API_FB"
   fi
-}
-
-addon() {
-  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/
-  cp -R $PKG_BUILD/.install_pkg/usr/share/$MEDIACENTER/addons/$PKG_NAME/* $ADDON_BUILD/$PKG_ADDON_ID/
-
-  ADDONSO=$(xmlstarlet sel -t -v "/addon/extension/@library_linux" $ADDON_BUILD/$PKG_ADDON_ID/addon.xml)
-  cp -L $PKG_BUILD/.install_pkg/usr/lib/$MEDIACENTER/addons/$PKG_NAME/$ADDONSO $ADDON_BUILD/$PKG_ADDON_ID/
 }

@@ -1,5 +1,5 @@
 ################################################################################
-#      This file is part of LibreELEC - http://www.libreelec.tv
+#      This file is part of LibreELEC - https://libreelec.tv
 #      Copyright (C) 2009-2016 Team LibreELEC (team@libreelec.tv)
 #
 #  LibreELEC is free software: you can redistribute it and/or modify
@@ -18,6 +18,7 @@
 
 PKG_NAME="libdvdnav"
 PKG_VERSION="43b5f81"
+PKG_SHA256="8e3f0563e16df898fe115e1723e3f78dbc953f6e9cf4f04568add215371d9ed2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/xbmc/libdvdnav"

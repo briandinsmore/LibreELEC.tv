@@ -18,6 +18,7 @@
 
 PKG_NAME="runc"
 PKG_VERSION="9df8b30"
+PKG_SHA256="11f69923a786efb82b65d9f1eec0ac665a985e631a67f3f4d466dac720efacdd"
 PKG_ARCH="any"
 PKG_LICENSE="APL"
 PKG_SITE="https://github.com/opencontainers/runc"
@@ -57,12 +58,12 @@ pre_make_target() {
   export CGO_NO_EMULATION=1
   export CGO_CFLAGS=$CFLAGS
   export LDFLAGS="-w -extldflags -static -X main.gitCommit=${PKG_VERSION} -X main.version=$(cat ./VERSION) -extld $CC"
-  export GOLANG=$ROOT/$TOOLCHAIN/lib/golang/bin/go
-  export GOPATH=$ROOT/$PKG_BUILD.gopath:$ROOT/$PKG_BUILD/Godeps/_workspace/
-  export GOROOT=$ROOT/$TOOLCHAIN/lib/golang
+  export GOLANG=$TOOLCHAIN/lib/golang/bin/go
+  export GOPATH=$PKG_BUILD.gopath:$PKG_BUILD/Godeps/_workspace/
+  export GOROOT=$TOOLCHAIN/lib/golang
   export PATH=$PATH:$GOROOT/bin
 
-  ln -fs $ROOT/$PKG_BUILD $ROOT/$PKG_BUILD/Godeps/_workspace/src/github.com/opencontainers/runc
+  ln -fs $PKG_BUILD $PKG_BUILD/Godeps/_workspace/src/github.com/opencontainers/runc
 }
 
 make_target() {

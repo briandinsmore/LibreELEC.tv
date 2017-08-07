@@ -18,6 +18,7 @@
 
 PKG_NAME="procps-ng"
 PKG_VERSION="3.3.12"
+PKG_SHA256="6ed65ab86318f37904e8f9014415a098bec5bc53653e5d9ab404f95ca5e1a7d4"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://gitlab.com/procps-ng/procps"
@@ -36,5 +37,5 @@ PKG_CONFIGURE_OPTS_TARGET="ac_cv_func_malloc_0_nonnull=yes \
 
 makeinstall_target() {
   mkdir -p $INSTALL/usr/bin
-    cp -P $ROOT/$PKG_BUILD/.$TARGET_NAME/top/top $INSTALL/usr/bin
+    cp -P $PKG_BUILD/.$TARGET_NAME/top/top $INSTALL/usr/bin
 }

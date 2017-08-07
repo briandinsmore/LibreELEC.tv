@@ -1,6 +1,6 @@
 ################################################################################
-#      This file is part of LibreELEC - http://www.libreelec.tv
-#      Copyright (C) 2016 Team LibreELEC
+#      This file is part of LibreELEC - https://libreelec.tv
+#      Copyright (C) 2016-present Team LibreELEC
 #
 #  LibreELEC is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -17,7 +17,8 @@
 ################################################################################
 
 PKG_NAME="libev"
-PKG_VERSION="4.22"
+PKG_VERSION="4.24"
+PKG_SHA256="973593d3479abdf657674a55afe5f78624b0e440614e2b8cb3a07f16d4d7f821"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://software.schmorp.de/pkg/libev.html"

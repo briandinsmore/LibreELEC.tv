@@ -18,6 +18,7 @@
 
 PKG_NAME="dvbhdhomerun"
 PKG_VERSION="20130704"
+PKG_SHA256="1af817b85b163f3c6c3a9a07410f54875e74513c197709638b4922165e894f54"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://sourceforge.net/projects/dvbhdhomerun/"
@@ -45,17 +46,17 @@ pre_make_target() {
 pre_configure_target() {
 
 # use it here to be sure libhdhomerun is already built
-  PKG_CMAKE_OPTS_TARGET="-DLIBHDHOMERUN_PATH=$(ls -d $ROOT/$BUILD/libhdhomerun-*/)"
+  PKG_CMAKE_OPTS_TARGET="-DLIBHDHOMERUN_PATH=$(ls -d $BUILD/libhdhomerun-*/)"
 
 # absolute path
-  LIBHDHOMERUN_PATH=$(ls -d $ROOT/$BUILD/libhdhomerun-*/)
+  LIBHDHOMERUN_PATH=$(ls -d $BUILD/libhdhomerun-*/)
   sed -i "s|SET(LIBHDHOMERUN_PATH .*)|SET(LIBHDHOMERUN_PATH $LIBHDHOMERUN_PATH)|g" ../userhdhomerun/CMakeLists.txt
   sed -i "s|/etc/dvbhdhomerun|/tmp/dvbhdhomerun|g" ../userhdhomerun/hdhomerun_tuner.cpp
   sed -i "s|/etc/dvbhdhomerun|/tmp/dvbhdhomerun|g" ../userhdhomerun/hdhomerun_controller.cpp
 }
 
 makeinstall_target() {
-  cd $ROOT/$PKG_BUILD
+  cd $PKG_BUILD
     mkdir -p $INSTALL/usr/lib/modules/$(get_module_dir)/hdhomerun
       cp kernel/*.ko $INSTALL/usr/lib/modules/$(get_module_dir)/hdhomerun/
 

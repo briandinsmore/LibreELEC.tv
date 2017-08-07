@@ -20,6 +20,7 @@
 
 PKG_NAME="nss"
 PKG_VERSION="3.27.1"
+PKG_SHA256="a3368812d7a9714115e76eae8b3f4b062d8407834d374691f4a297a0e54a737a"
 PKG_ARCH="any"
 PKG_LICENSE="Mozilla Public License"
 PKG_SITE="http://ftp.mozilla.org/"
@@ -34,7 +35,7 @@ PKG_AUTORECONF="no"
 MAKEFLAGS=-j1
 
 make_host() {
-  cd $ROOT/$PKG_BUILD/nss
+  cd $PKG_BUILD/nss
 
   [ "$TARGET_ARCH" = "x86_64" ] && export USE_64=1
 
@@ -42,15 +43,15 @@ make_host() {
 }
 
 makeinstall_host() {
-  cp $ROOT/$PKG_BUILD/nss/coreconf/nsinstall/*/nsinstall $ROOT/$TOOLCHAIN/bin
+  cp $PKG_BUILD/nss/coreconf/nsinstall/*/nsinstall $TOOLCHAIN/bin
 }
 
 post_makeinstall_host() {
-  rm -rf $ROOT/$PKG_BUILD/nss/coreconf/nsinstall/Linux*
+  rm -rf $PKG_BUILD/nss/coreconf/nsinstall/Linux*
 }
 
 make_target() {
-  cd $ROOT/$PKG_BUILD/nss
+  cd $PKG_BUILD/nss
 
   [ "$TARGET_ARCH" = "x86_64" ] && TARGET_USE_64="USE_64=1"
 
@@ -59,14 +60,14 @@ make_target() {
      USE_SYSTEM_ZLIB=1 ZLIB_LIBS=-lz \
      OS_TEST=$TARGET_ARCH \
      NSS_TESTS="dummy" \
-     NSINSTALL=$ROOT/$TOOLCHAIN/bin/nsinstall \
+     NSINSTALL=$TOOLCHAIN/bin/nsinstall \
      CPU_ARCH_TAG=$TARGET_ARCH \
      CC=$CC LDFLAGS="$LDFLAGS -L$SYSROOT_PREFIX/usr/lib" \
      V=1
 }
 
 makeinstall_target() {
-  cd $ROOT/$PKG_BUILD
+  cd $PKG_BUILD
   $STRIP dist/Linux*/lib/*.so
   cp -L dist/Linux*/lib/*.so $SYSROOT_PREFIX/usr/lib
   cp -L dist/Linux*/lib/libcrmf.a $SYSROOT_PREFIX/usr/lib
